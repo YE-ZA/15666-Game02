@@ -184,7 +184,9 @@ void PlayMode::update(float elapsed) {
 			p.id->rotation = p.rotation * glm::angleAxis(glm::radians(p.speed * time), p.axis);
 		}
 		
-		a = std::min((G * gravity_star->M / gravity_star->r / gravity_star->r), 15.0f) * (gravity_star->id->position - camera->transform->position);
+		cur_a = std::min((G * gravity_star->M / gravity_star->r / gravity_star->r), 15.0f) * (gravity_star->id->position - camera->transform->position);
+		a = pre_a * 0.1f + cur_a * 0.9f;
+		pre_a = cur_a;
 		camera->transform->position += 0.5f * a * elapsed * elapsed;
 
 		//rotate camera by gravity

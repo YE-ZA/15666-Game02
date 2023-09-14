@@ -51,6 +51,8 @@ struct PlayMode : Mode {
 	//universal gravitation, not a real space scale value
 	float G = 6.67f;
 	glm::vec3 a = glm::vec3(0.0f);
+	glm::vec3 cur_a = glm::vec3(0.0f);
+	glm::vec3 pre_a = glm::vec3(0.0f);
 	float max_a = 0.0f;
 	Planet *gravity_star = nullptr;
 
